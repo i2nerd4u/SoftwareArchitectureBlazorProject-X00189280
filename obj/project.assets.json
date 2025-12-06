@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Karls Pc\\Documents\\BLAZOR\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Karls Pc\\Desktop\\BLAZORPROJECT\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI.csproj",
       "projectName": "RickAndMortyAPI",
-      "projectPath": "C:\\Users\\Karls Pc\\Documents\\BLAZOR\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI.csproj",
+      "projectPath": "C:\\Users\\Karls Pc\\Desktop\\BLAZORPROJECT\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI.csproj",
       "packagesPath": "C:\\Users\\Karls Pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Karls Pc\\Documents\\BLAZOR\\SoftwareArchitectureBlazorProject-X00189280\\obj\\",
+      "outputPath": "C:\\Users\\Karls Pc\\Desktop\\BLAZORPROJECT\\SoftwareArchitectureBlazorProject-X00189280\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Karls Pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,8 +45,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.300"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -70,7 +69,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

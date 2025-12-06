@@ -1,50 +1,24 @@
-# Build folders
+# Build artifacts
 bin/
 obj/
-out/
 
-# Visual Studio files
+# Visual Studio things
 .vs/
 *.user
 *.suo
-*.userosscache
-*.sln.docstates
 
-# Rider files
-.idea/
-
-# VS Code files
-.vscode/
+# Build results
+*.dll
+*.exe
+*.pdb
 
 # NuGet
 *.nupkg
 packages/
-# Uncomment if you have a NuGet local cache
-# .nuget/
-
-# ASP.NET / Blazor
-wwwroot/lib/
-*.dbmdl
+*.snk
+project.lock.json
+*.nuget.props
+*.nuget.targets
 
 # Logs
 *.log
-*.vspscc
-
-# OS generated files
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Test output
-TestResults/
-*.trx
-
-# Backup files
-*.bak
-*.swp
-
-# JetBrains Rider local history
-.idea/.idea.*
-
-# Publish folder
-publish/
