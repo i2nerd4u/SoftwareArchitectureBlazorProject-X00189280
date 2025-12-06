@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1EpcueQ551rQlGK4sVismoHcBGK1hnqP7SUxRCeoSRY=",
+  "Hash": "FMHgQCFi8Y51tB6Ad+E7PSPY3HD3fZPW1J28cXX2cEA=",
   "Source": "RickAndMortyAPI",
   "BasePath": "_content/RickAndMortyAPI",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "RickAndMortyAPI\\wwwroot",
       "Source": "RickAndMortyAPI",
-      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\",
       "BasePath": "_content/RickAndMortyAPI",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\obj\\Debug\\net8.0\\scopedcss\\bundle\\RickAndMortyAPI.styles.css",
+      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\obj\\Debug\\net8.0\\scopedcss\\bundle\\RickAndMortyAPI.styles.css",
       "SourceId": "RickAndMortyAPI",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/RickAndMortyAPI",
       "RelativePath": "RickAndMortyAPI.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\obj\\Debug\\net8.0\\scopedcss\\bundle\\RickAndMortyAPI.styles.css"
+      "OriginalItemSpec": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\obj\\Debug\\net8.0\\scopedcss\\bundle\\RickAndMortyAPI.styles.css"
     },
     {
-      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\RickAndMortyAPI.bundle.scp.css",
+      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\RickAndMortyAPI.bundle.scp.css",
       "SourceId": "RickAndMortyAPI",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/RickAndMortyAPI",
       "RelativePath": "RickAndMortyAPI.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\RickAndMortyAPI.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\RickAndMortyAPI.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\app.css",
       "SourceId": "RickAndMortyAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\",
       "BasePath": "_content/RickAndMortyAPI",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "RickAndMortyAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\",
       "BasePath": "_content/RickAndMortyAPI",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "RickAndMortyAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\",
       "BasePath": "_content/RickAndMortyAPI",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\favicon.png",
       "SourceId": "RickAndMortyAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\",
       "BasePath": "_content/RickAndMortyAPI",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
