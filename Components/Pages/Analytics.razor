@@ -16,26 +16,50 @@ else
     <div class="stats-grid">
         <div class="stat-card primary">
             <div class="stat-icon">👥</div>
-            <div class="stat-value">@totalCharacters</div>
-            <div class="stat-label">Total Characters</div>
+            <div class="stat-content">
+                <div class="stat-value">@totalCharacters</div>
+                <div class="stat-label">Total Characters</div>
+            </div>
         </div>
 
         <div class="stat-card success">
             <div class="stat-icon">💚</div>
-            <div class="stat-value">@aliveCount</div>
-            <div class="stat-label">Alive Characters</div>
+            <div class="stat-content">
+                <div class="stat-value">@aliveCount</div>
+                <div class="stat-label">Alive Characters</div>
+            </div>
         </div>
 
         <div class="stat-card danger">
             <div class="stat-icon">💀</div>
-            <div class="stat-value">@deadCount</div>
-            <div class="stat-label">Dead Characters</div>
+            <div class="stat-content">
+                <div class="stat-value">@deadCount</div>
+                <div class="stat-label">Dead Characters</div>
+            </div>
         </div>
 
         <div class="stat-card warning">
             <div class="stat-icon">📺</div>
-            <div class="stat-value">@totalEpisodes</div>
-            <div class="stat-label">Total Episodes</div>
+            <div class="stat-content">
+                <div class="stat-value">@totalEpisodes</div>
+                <div class="stat-label">Total Episodes</div>
+            </div>
+        </div>
+
+        <div class="stat-card info">
+            <div class="stat-icon">🌍</div>
+            <div class="stat-content">
+                <div class="stat-value">@uniqueOrigins</div>
+                <div class="stat-label">Unique Origins</div>
+            </div>
+        </div>
+
+        <div class="stat-card purple">
+            <div class="stat-icon">🧬</div>
+            <div class="stat-content">
+                <div class="stat-value">@uniqueSpecies</div>
+                <div class="stat-label">Species Types</div>
+            </div>
         </div>
     </div>
 
@@ -124,6 +148,63 @@ else
                 <div class="fact-item">⭐ Character with most appearances: <strong>@mostFeatured.FirstOrDefault()?.Name</strong></div>
             </div>
         </div>
+
+        <div class="analysis-card full-width">
+            <h3 class="card-title">🌟 Top 15 Most Popular Origins</h3>
+            <div class="origin-chart">
+                @foreach (var origin in topOrigins.Take(15))
+                {
+                    var percentage = (origin.Value * 100.0 / totalCharacters);
+                    <div class="origin-row">
+                        <div class="origin-info">
+                            <span class="origin-name">@origin.Key</span>
+                            <span class="origin-stats">@origin.Value characters (@percentage.ToString("F1")%)</span>
+                        </div>
+                        <div class="origin-bar-container">
+                            <div class="origin-bar" style="width: @percentage%">
+                                <span class="bar-label">@origin.Value</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="analysis-card full-width">
+            <h3 class="card-title">🔬 Species Analysis Matrix</h3>
+            <div class="species-matrix">
+                @foreach (var species in topSpecies.Take(12))
+                {
+                    var speciesChars = characters.Where(c => c.Species == species.Key).ToList();
+                    var aliveCount = speciesChars.Count(c => c.Status.Equals("Alive", StringComparison.OrdinalIgnoreCase));
+                    var deadCount = speciesChars.Count(c => c.Status.Equals("Dead", StringComparison.OrdinalIgnoreCase));
+                    var unknownCount = species.Value - aliveCount - deadCount;
+                    
+                    <div class="species-card">
+                        <div class="species-header">
+                            <div class="species-name">@species.Key</div>
+                            <div class="species-total">@species.Value</div>
+                        </div>
+                        <div class="species-breakdown">
+                            <div class="breakdown-item alive" style="width: @((aliveCount * 100.0 / species.Value))%">
+                                @if (aliveCount > 0) { <span>@aliveCount</span> }
+                            </div>
+                            <div class="breakdown-item dead" style="width: @((deadCount * 100.0 / species.Value))%">
+                                @if (deadCount > 0) { <span>@deadCount</span> }
+                            </div>
+                            <div class="breakdown-item unknown" style="width: @((unknownCount * 100.0 / species.Value))%">
+                                @if (unknownCount > 0) { <span>@unknownCount</span> }
+                            </div>
+                        </div>
+                        <div class="species-legend">
+                            <span class="legend-dot alive"></span>Alive
+                            <span class="legend-dot dead"></span>Dead
+                            <span class="legend-dot unknown"></span>Unknown
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
 }
 
@@ -179,10 +260,19 @@ else
         box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
     }
 
-    .stat-card.primary { border-top: 4px solid #667eea; }
-    .stat-card.success { border-top: 4px solid #38ef7d; }
-    .stat-card.danger { border-top: 4px solid #f45c43; }
-    .stat-card.warning { border-top: 4px solid #ffd700; }
+    .stat-card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        text-align: left;
+    }
+
+    .stat-card.primary { border-left: 5px solid #667eea; }
+    .stat-card.success { border-left: 5px solid #38ef7d; }
+    .stat-card.danger { border-left: 5px solid #f45c43; }
+    .stat-card.warning { border-left: 5px solid #ffd700; }
+    .stat-card.info { border-left: 5px solid #00b5cc; }
+    .stat-card.purple { border-left: 5px solid #764ba2; }
 
     .stat-icon {
         font-size: 3rem;
@@ -409,6 +499,125 @@ else
         color: #1f2937;
     }
 
+    .origin-chart {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .origin-row {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .origin-info {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+    }
+
+    .origin-name {
+        font-weight: 700;
+        color: #1f2937;
+    }
+
+    .origin-stats {
+        color: #6b7280;
+    }
+
+    .origin-bar-container {
+        height: 30px;
+        background: #e5e7eb;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .origin-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        transition: width 0.5s;
+    }
+
+    .bar-label {
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.85rem;
+    }
+
+    .species-matrix {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .species-card {
+        background: #f9fafb;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .species-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .species-name {
+        font-weight: 700;
+        color: #1f2937;
+        font-size: 0.95rem;
+    }
+
+    .species-total {
+        font-weight: 700;
+        color: #667eea;
+    }
+
+    .species-breakdown {
+        display: flex;
+        height: 30px;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 8px;
+    }
+
+    .breakdown-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .breakdown-item.alive { background: #38ef7d; }
+    .breakdown-item.dead { background: #f45c43; }
+    .breakdown-item.unknown { background: #9ca3af; }
+
+    .species-legend {
+        display: flex;
+        gap: 12px;
+        font-size: 0.75rem;
+        color: #6b7280;
+        align-items: center;
+    }
+
+    .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-left: 8px;
+    }
+
+    .legend-dot.alive { background: #38ef7d; }
+    .legend-dot.dead { background: #f45c43; }
+    .legend-dot.unknown { background: #9ca3af; }
+
     @@media (max-width: 768px) {
         .analysis-grid {
             grid-template-columns: 1fr;
@@ -427,10 +636,14 @@ else
     int aliveCount = 0;
     int deadCount = 0;
     int unknownCount = 0;
+    int uniqueOrigins = 0;
+    int uniqueSpecies = 0;
     double avgEpisodesPerCharacter = 0;
     string mostCommonOrigin = "";
 
+    List<Character> characters = new();
     List<KeyValuePair<string, int>> topSpecies = new();
+    List<KeyValuePair<string, int>> topOrigins = new();
     List<KeyValuePair<string, int>> genderDistribution = new();
     List<CharacterStats> mostFeatured = new();
 
@@ -442,7 +655,6 @@ else
 
     private async Task LoadAnalytics()
     {
-        var characters = new List<Character>();
         string? url = "https://rickandmortyapi.com/api/character";
 
         while (!string.IsNullOrEmpty(url))
@@ -465,10 +677,19 @@ else
         deadCount = characters.Count(c => c.Status.Equals("Dead", StringComparison.OrdinalIgnoreCase));
         unknownCount = characters.Count(c => c.Status.Equals("unknown", StringComparison.OrdinalIgnoreCase));
 
-        avgEpisodesPerCharacter = Math.Round(characters.Average(c => c.Episode.Count), 1);
+        avgEpisodesPerCharacter = characters.Any() ? Math.Round(characters.Average(c => c.Episode.Count), 1) : 0;
+
+        uniqueOrigins = characters.Select(c => c.Origin?.Name ?? "Unknown").Distinct().Count();
+        uniqueSpecies = characters.Select(c => c.Species).Distinct().Count();
 
         topSpecies = characters
             .GroupBy(c => c.Species)
+            .Select(g => new KeyValuePair<string, int>(g.Key, g.Count()))
+            .OrderByDescending(x => x.Value)
+            .ToList();
+
+        topOrigins = characters
+            .GroupBy(c => c.Origin?.Name ?? "Unknown")
             .Select(g => new KeyValuePair<string, int>(g.Key, g.Count()))
             .OrderByDescending(x => x.Value)
             .ToList();

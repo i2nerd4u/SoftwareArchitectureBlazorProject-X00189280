@@ -6,4 +6,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="RickAndMortyAPI.Tests\**" />
+    <Content Remove="RickAndMortyAPI.Tests\**" />
+    <EmbeddedResource Remove="RickAndMortyAPI.Tests\**" />
+    <None Remove="RickAndMortyAPI.Tests\**" />
+  </ItemGroup>
+
 </Project>
