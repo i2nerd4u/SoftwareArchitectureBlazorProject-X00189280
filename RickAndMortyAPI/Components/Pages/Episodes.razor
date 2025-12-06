@@ -1,0 +1,84 @@
+﻿@page "/Episodes"
+@inject HttpClient Http
+@using RickAndMortyAPI.Components.Data
+@using Microsoft.AspNetCore.Components.Routing
+
+<h3 class="text-center mb-4" style="color:#00FFCC; text-shadow:2px 2px #000;">Rick and Morty Episodes</h3>
+
+@if (episodes == null || !episodes.Any())
+{
+            <p class="text-center text-warning">Loading episodes...</p>
+}
+else
+{
+            <div class="container-fluid">
+                <div class="row g-3">
+            @foreach (var season in new[] { "S01", "S02", "S03", "S04", "S05" })
+            {
+                var seasonEpisodes = episodes
+                    .Where(e => e.episode.StartsWith(season))
+                    .OrderBy(e => e.id)
+                    .ToList();
+
+                if (seasonEpisodes.Any())
+                {
+                                            <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                                                <h5 class="text-center mb-2" style="color:#FFCC00; text-shadow:1px 1px #000;">Season @season.Substring(1)</h5>
+                                                <ul class="list-group season-list">
+                            @foreach (var ep in seasonEpisodes)
+                            {
+                                                                <li class="list-group-item episode-item p-2 mb-1" style="background: #1b1b1b; border: 1px solid #00FFCC; border-radius:5px;">
+                                                                    <NavLink class="text-decoration-none fw-bold text-success episode-name"
+                                                                             href="@($"/EpisodeDetails/{ep.id}")">
+                                        @ep.name
+                                                                    </NavLink>
+                                                                    <span class="text-muted d-block small">@ep.episode</span>
+                                                                </li>
+                            }
+                                                </ul>
+                                            </div>
+                }
+            }
+                </div>
+            </div>
+}
+
+<style>
+    .episode-item:hover {
+        transform: scale(1.05);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .episode-name:hover {
+        text-decoration: underline;
+    }
+
+    .season-list {
+        padding-left: 0;
+    }
+</style>
+
+
+@code {
+    List<Episode> episodes = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        string url = "https://rickandmortyapi.com/api/episode";
+
+        while (!string.IsNullOrEmpty(url))
+        {
+            var response = await Http.GetFromJsonAsync<EpisodeSearchResponse>(url);
+            if (response?.results != null)
+            {
+                episodes.AddRange(response.results);
+                url = response.info?.next;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+}

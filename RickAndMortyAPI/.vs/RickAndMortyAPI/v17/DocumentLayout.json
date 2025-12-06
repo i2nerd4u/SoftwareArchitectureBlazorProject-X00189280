@@ -1,0 +1,269 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\pages\\characterlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\pages\\characterlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\pages\\episodedetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\pages\\episodedetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\pages\\characterdetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\pages\\characterdetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\pages\\episodes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\pages\\episodes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\data\\episode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\data\\episode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|c:\\users\\karls pc\\documents\\softwarearchca3\\softwarearchitectureblazorproject-x00189280\\rickandmortyapi\\components\\data\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45689C7A-28A7-42D0-96ED-E9AD8113091F}|RickAndMortyAPI.csproj|solutionrelative:components\\data\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "Components\\_Imports.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\_Imports.razor",
+              "RelativeToolTip": "Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T19:22:16.089Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EpisodeDetails.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\EpisodeDetails.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\EpisodeDetails.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\EpisodeDetails.razor",
+              "RelativeToolTip": "Components\\Pages\\EpisodeDetails.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAUwC0AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T12:49:41.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CharacterDetail.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\CharacterDetail.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\CharacterDetail.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\CharacterDetail.razor",
+              "RelativeToolTip": "Components\\Pages\\CharacterDetail.razor",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T14:12:30.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CharacterList.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\CharacterList.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\CharacterList.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\CharacterList.razor",
+              "RelativeToolTip": "Components\\Pages\\CharacterList.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T12:52:40.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-03T13:29:18.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Weather.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\Weather.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Weather.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\Weather.razor",
+              "RelativeToolTip": "Components\\Pages\\Weather.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-03T13:43:08.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Components\\App.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\App.razor",
+              "RelativeToolTip": "Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T11:57:19.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T12:52:13.283Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T12:11:23.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Counter.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\Counter.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Counter.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\Counter.razor",
+              "RelativeToolTip": "Components\\Pages\\Counter.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T13:14:23.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Character.cs",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Data\\Character.cs",
+              "RelativeDocumentMoniker": "Components\\Data\\Character.cs",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Data\\Character.cs",
+              "RelativeToolTip": "Components\\Data\\Character.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T12:52:57.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T11:27:34.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Error.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\Error.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Error.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\Error.razor",
+              "RelativeToolTip": "Components\\Pages\\Error.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T11:49:49.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Episodes.razor",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\Episodes.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Episodes.razor",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Pages\\Episodes.razor",
+              "RelativeToolTip": "Components\\Pages\\Episodes.razor",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T11:41:26.825Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Episode.cs",
+              "DocumentMoniker": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Data\\Episode.cs",
+              "RelativeDocumentMoniker": "Components\\Data\\Episode.cs",
+              "ToolTip": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI\\Components\\Data\\Episode.cs",
+              "RelativeToolTip": "Components\\Data\\Episode.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAzwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T11:36:53.111Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c79b74ff-f1d7-4c94-aefa-4d22bfe1b1f9}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

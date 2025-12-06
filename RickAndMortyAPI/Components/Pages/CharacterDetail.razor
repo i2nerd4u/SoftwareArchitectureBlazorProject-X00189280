@@ -1,0 +1,70 @@
+﻿@page "/CharacterDetails/{id:int}"
+@inject HttpClient Http
+@using RickAndMortyAPI.Components.Data
+
+<h2 class="text-center mb-4" style="color:#00FFCC; text-shadow:2px 2px #000;">Character Details</h2>
+
+@if (character == null)
+{
+        <p class="text-center text-warning">Loading character...</p>
+}
+else
+{
+        <div class="text-center mb-3">
+            <img src="@character.image" alt="@character.name" class="img-fluid rounded" style="max-height:250px;" />
+        </div>
+
+        <div class="mb-3 text-center">
+            <h4 class="text-success">@character.name</h4>
+            <p><strong>Status:</strong> @character.status</p>
+            <p><strong>Species:</strong> @character.species</p>
+            <p><strong>Gender:</strong> @character.gender</p>
+        </div>
+
+        <h5 class="mt-4 mb-2 text-warning">Episodes:</h5>
+        <ul class="list-group">
+        @foreach (var ep in episodes)
+        {
+                    <li class="list-group-item p-2 mb-1" style="background:#1b1b1b; border:1px solid #00FFCC; border-radius:5px;">
+                        <NavLink class="text-decoration-none fw-bold text-primary" href="@($"/EpisodeDetails/{ep.id}")">
+                    @ep.name
+                        </NavLink>
+                        <span class="text-muted d-block small">@ep.episode</span>
+                    </li>
+        }
+        </ul>
+}
+
+<style>
+    .list-group-item:hover { background: linear-gradient(90deg, #00FFCC, #FF00FF); cursor:pointer; transition:0.3s; }
+</style>
+
+@code {
+    [Parameter] public int id { get; set; }
+
+    Character? character;
+    List<Episode> episodes = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        character = await Http.GetFromJsonAsync<Character>($"https://rickandmortyapi.com/api/character/{id}");
+
+        episodes = new List<Episode>();
+        foreach (var url in character.episode)
+        {
+            var ep = await Http.GetFromJsonAsync<Episode>(url);
+            episodes.Add(ep);
+        }
+    }
+
+    public class Character
+    {
+        public int id { get; set; }
+        public string name { get; set; } = "";
+        public string status { get; set; } = "";
+        public string species { get; set; } = "";
+        public string gender { get; set; } = "";
+        public string image { get; set; } = "";
+        public List<string> episode { get; set; } = new();
+    }
+}
