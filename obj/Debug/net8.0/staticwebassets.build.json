@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "H95FMzHdrIklB0zgXtk2GqmfTRFvWxA+EjNaiyrbNks=",
+  "Hash": "cbg3m7yVhM/JIW6WYUL6DZp5/FD94FS71WepL8HZ4pw=",
   "Source": "RickAndMortyAPI",
   "BasePath": "_content/RickAndMortyAPI",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\app.css"
+    },
+    {
+      "Identity": "C:\\Users\\Karls Pc\\Documents\\BLAZOR\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\app.css.backup",
+      "SourceId": "RickAndMortyAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Karls Pc\\Documents\\BLAZOR\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\",
+      "BasePath": "_content/RickAndMortyAPI",
+      "RelativePath": "app.css.backup",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\app.css.backup"
     },
     {
       "Identity": "C:\\Users\\Karls Pc\\Documents\\BLAZOR\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\bootstrap\\bootstrap.min.css",

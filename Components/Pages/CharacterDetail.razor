@@ -1,42 +1,234 @@
-﻿@page "/CharacterDetails/{id:int}"
+@page "/CharacterDetails/{id:int}"
 @inject HttpClient Http
 @using RickAndMortyAPI.Components.Data
 
-<h2 class="text-center mb-4" style="color:#00FFCC; text-shadow:2px 2px #000;">Character Details</h2>
+<div class="hero-header">
+    <h1 class="hero-title">Character Details</h1>
+</div>
 
 @if (character == null)
 {
-        <p class="text-center text-warning">Loading character...</p>
+    <div class="loading">Loading character...</div>
 }
 else
 {
-        <div class="text-center mb-3">
-            <img src="@character.image" alt="@character.name" class="img-fluid rounded" style="max-height:250px;" />
+    <div class="detail-container">
+        <div class="character-profile">
+            <div class="profile-image">
+                <img src="@character.image" alt="@character.name" />
+                <div class="status-badge @character.status.ToLower()">@character.status</div>
+            </div>
+            <div class="profile-info">
+                <h2 class="character-title">@character.name</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Species</span>
+                        <span class="info-value">@character.species</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Gender</span>
+                        <span class="info-value">@character.gender</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status</span>
+                        <span class="info-value">@character.status</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Episodes</span>
+                        <span class="info-value">@episodes.Count</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="mb-3 text-center">
-            <h4 class="text-success">@character.name</h4>
-            <p><strong>Status:</strong> @character.status</p>
-            <p><strong>Species:</strong> @character.species</p>
-            <p><strong>Gender:</strong> @character.gender</p>
+        <div class="episodes-section">
+            <h3 class="section-title">Appears in Episodes</h3>
+            <div class="episodes-grid">
+                @foreach (var ep in episodes)
+                {
+                    <NavLink href="@($"/EpisodeDetails/{ep.id}")" class="episode-card">
+                        <div class="episode-code">@ep.episode</div>
+                        <div class="episode-name">@ep.name</div>
+                    </NavLink>
+                }
+            </div>
         </div>
-
-        <h5 class="mt-4 mb-2 text-warning">Episodes:</h5>
-        <ul class="list-group">
-        @foreach (var ep in episodes)
-        {
-                    <li class="list-group-item p-2 mb-1" style="background:#1b1b1b; border:1px solid #00FFCC; border-radius:5px;">
-                        <NavLink class="text-decoration-none fw-bold text-primary" href="@($"/EpisodeDetails/{ep.id}")">
-                    @ep.name
-                        </NavLink>
-                        <span class="text-muted d-block small">@ep.episode</span>
-                    </li>
-        }
-        </ul>
+    </div>
 }
 
 <style>
-    .list-group-item:hover { background: linear-gradient(90deg, #00FFCC, #FF00FF); cursor:pointer; transition:0.3s; }
+    .hero-header {
+        text-align: center;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #fff;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .loading {
+        text-align: center;
+        padding: 60px 20px;
+        font-size: 1.5rem;
+        color: #6b7280;
+    }
+
+    .detail-container {
+        background: #fff;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .character-profile {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .profile-image {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .profile-image img {
+        width: 100%;
+        display: block;
+    }
+
+    .status-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .status-badge.alive { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+    .status-badge.dead { background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%); }
+    .status-badge.unknown { background: linear-gradient(135deg, #757f9a 0%, #d7dde8 100%); }
+
+    .profile-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .character-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1f2937;
+        margin-bottom: 25px;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .info-item {
+        background: #f9fafb;
+        padding: 20px;
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
+    }
+
+    .info-label {
+        display: block;
+        font-size: 0.85rem;
+        color: #6b7280;
+        font-weight: 600;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    .info-value {
+        display: block;
+        font-size: 1.3rem;
+        color: #1f2937;
+        font-weight: 700;
+    }
+
+    .episodes-section {
+        margin-top: 40px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 20px;
+    }
+
+    .episodes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .episode-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+        background: #f9fafb;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .episode-card:hover {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transform: translateX(5px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .episode-code {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #667eea;
+        min-width: 60px;
+    }
+
+    .episode-card:hover .episode-code {
+        color: #fff;
+    }
+
+    .episode-name {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1f2937;
+    }
+
+    .episode-card:hover .episode-name {
+        color: #fff;
+    }
+
+    @@media (max-width: 768px) {
+        .character-profile {
+            grid-template-columns: 1fr;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
 
 @code {

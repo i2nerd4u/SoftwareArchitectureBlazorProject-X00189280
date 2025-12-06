@@ -1,0 +1,131 @@
+@page "/Characters"
+@page "/Characters/{StatusFilter}"
+@page "/Characters/{StatusFilter}/{Letter}"
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@using System.Text.Json.Serialization
+
+<h3 class="text-center mb-4" style="color:#00FFCC; text-shadow:2px 2px #000;">
+    @StatusFilter Rick and Morty Characters 
+</h3>
+
+<div class="mb-4">
+    <div class="d-flex gap-2 flex-wrap mb-3 justify-content-center">
+        <a href="/Characters" class="btn @(string.IsNullOrEmpty(StatusFilter) ? "btn-primary" : "btn-outline-primary")">All</a>
+        <a href="/Characters/Alive" class="btn @(StatusFilter == "Alive" ? "btn-success" : "btn-outline-success")">Alive</a>
+        <a href="/Characters/Dead" class="btn @(StatusFilter == "Dead" ? "btn-danger" : "btn-outline-danger")">Dead</a>
+        <a href="/Characters/unknown" class="btn @(StatusFilter == "unknown" ? "btn-secondary" : "btn-outline-secondary")">Unknown</a>
+    </div>
+    
+    <div class="d-flex gap-1 flex-wrap justify-content-center">
+        @foreach (var letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        {
+            var url = string.IsNullOrEmpty(StatusFilter) ? $"/Characters/{letter}" : $"/Characters/{StatusFilter}/{letter}";
+            <a href="@url" class="btn btn-sm @(Letter == letter.ToString() ? "btn-success" : "btn-outline-success")">@letter</a>
+        }
+    </div>
+</div>
+
+<p class="text-center text-info">@filterMessage</p>
+
+@if (filteredCharacters == null || !filteredCharacters.Any())
+{
+        <p class="text-center text-warning">No characters found.</p>
+}
+else
+{
+        <div class="row g-3">
+        @foreach (var c in filteredCharacters)
+        {
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card h-100 character-card text-center p-2" style="background:#1b1b1b; border:1px solid #00FFCC;">
+                            <img src="@c.Image" class="card-img-top rounded" alt="@c.Name" />
+                            <div class="card-body p-2">
+                                <NavLink class="text-decoration-none fw-bold text-success" href="@($"/CharacterDetails/{c.Id}")">
+                            @c.Name
+                                </NavLink>
+                                <p class="text-muted small mb-0">@c.Status</p>
+                                <p class="text-muted small mb-0">Appears in: @c.Episode.Count episodes</p>
+                            </div>
+                        </div>
+                    </div>
+        }
+        </div>
+}
+
+@code {
+    [Parameter]
+    public string? StatusFilter { get; set; }
+    
+    [Parameter]
+    public string? Letter { get; set; }
+
+    List<Character> characters = new();
+    List<Character> filteredCharacters = new();
+    string filterMessage = "Loading characters...";
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (characters.Any()) return;
+
+        string? url = "https://rickandmortyapi.com/api/character";
+
+        while (!string.IsNullOrEmpty(url))
+        {
+            try
+            {
+                var response = await Http.GetFromJsonAsync<CharacterSearchResponse>(url);
+                if (response?.Results != null)
+                {
+                    characters.AddRange(response.Results);
+                    url = response.Info?.Next;
+                }
+                else break;
+            }
+            catch { break; }
+            await Task.Yield();
+        }
+
+        ApplyFilter();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (characters.Any())
+        {
+            ApplyFilter();
+        }
+    }
+
+    private void ApplyFilter()
+    {
+        filteredCharacters = characters
+            .Where(c =>
+                (string.IsNullOrEmpty(StatusFilter) || c.Status.Equals(StatusFilter, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrEmpty(Letter) || c.Name.StartsWith(Letter, StringComparison.OrdinalIgnoreCase))
+            )
+            .ToList();
+
+        filterMessage = $"Found {filteredCharacters.Count} characters";
+    }
+
+    public class Character
+    {
+        [JsonPropertyName("id")] public int Id { get; set; }
+        [JsonPropertyName("name")] public string Name { get; set; } = "";
+        [JsonPropertyName("status")] public string Status { get; set; } = "";
+        [JsonPropertyName("image")] public string Image { get; set; } = "";
+        [JsonPropertyName("episode")] public List<string> Episode { get; set; } = new();
+    }
+
+    public class CharacterSearchResponse
+    {
+        [JsonPropertyName("info")] public CharacterInfo Info { get; set; } = new();
+        [JsonPropertyName("results")] public List<Character> Results { get; set; } = new();
+    }
+
+    public class CharacterInfo
+    {
+        [JsonPropertyName("next")] public string? Next { get; set; }
+    }
+}
