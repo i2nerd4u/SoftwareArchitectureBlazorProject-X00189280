@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\app.css"
     },
     {
+      "Id": "C:\\Users\\Karls Pc\\Documents\\BLAZOR\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\app.css.backup",
+      "PackagePath": "staticwebassets\\app.css.backup"
+    },
+    {
       "Id": "C:\\Users\\Karls Pc\\Documents\\BLAZOR\\SoftwareArchitectureBlazorProject-X00189280\\wwwroot\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
     },

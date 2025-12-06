@@ -1,79 +1,253 @@
 ﻿@page "/Characters"
 @page "/Characters/{StatusFilter}"
+@page "/Characters/{StatusFilter}/{Letter}"
 @inject HttpClient Http
+@inject NavigationManager Navigation
 @using System.Text.Json.Serialization
 
-<h3 class="text-center mb-4" style="color:#00FFCC; text-shadow:2px 2px #000;">
-    @StatusFilter Rick and Morty Characters 
-</h3>
+<div class="hero-header">
+    <h1 class="hero-title">Rick and Morty Characters</h1>
+    <p class="hero-subtitle">@filterMessage</p>
+</div>
 
-<div class="mb-3 row g-2 align-items-center">
-    <!-- Search box -->
-    <div class="col-12 mb-2">
-        <input type="text" class="form-control" placeholder="Search by name..." 
-               @bind="searchName" />
+<div class="filter-container">
+    <div class="status-filters">
+        <a href="/Characters" class="filter-btn @((string.IsNullOrEmpty(StatusFilter) || StatusFilter == "All") ? "active" : "")">All</a>
+        <a href="/Characters/Alive" class="filter-btn alive @(StatusFilter == "Alive" ? "active" : "")">Alive</a>
+        <a href="/Characters/Dead" class="filter-btn dead @(StatusFilter == "Dead" ? "active" : "")">Dead</a>
+        <a href="/Characters/unknown" class="filter-btn unknown @(StatusFilter == "unknown" ? "active" : "")">Unknown</a>
     </div>
-
-    <!-- Apply search button -->
-    <div class="col-12 mb-2">
-        <button class="btn btn-info w-100" @onclick="ApplySearch">Search</button>
-    </div>
-
-    <!-- Status buttons -->
-    <div class="col-12 mb-2">
-        <NavLink class="btn btn-primary w-100" href="/Characters">All Characters</NavLink>
-    </div>
-    <div class="col-sm-6 col-md-4 mb-2">
-        <NavLink class="btn btn-success w-100" href="/Characters/Alive">Alive</NavLink>
-    </div>
-    <div class="col-sm-6 col-md-4 mb-2">
-        <NavLink class="btn btn-danger w-100" href="/Characters/Dead">Dead</NavLink>
-    </div>
-    <div class="col-sm-6 col-md-4 mb-2">
-        <NavLink class="btn btn-secondary w-100" href="/Characters/unknown">Unknown</NavLink>
+    
+    <div class="letter-filters">
+        @foreach (var letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        {
+            var url = string.IsNullOrEmpty(StatusFilter) ? $"/Characters/All/{letter}" : $"/Characters/{StatusFilter}/{letter}";
+            <a href="@url" class="letter-btn @(Letter == letter.ToString() ? "active" : "")">@letter</a>
+        }
     </div>
 </div>
 
-<p class="text-center text-info">@filterMessage</p>
-
 @if (filteredCharacters == null || !filteredCharacters.Any())
 {
-        <p class="text-center text-warning">No characters found.</p>
+    <div class="no-results">
+        <p>No characters found</p>
+    </div>
 }
 else
 {
-        <div class="row g-3">
+    <div class="characters-grid">
         @foreach (var c in filteredCharacters)
         {
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="card h-100 character-card text-center p-2" style="background:#1b1b1b; border:1px solid #00FFCC;">
-                            <img src="@c.Image" class="card-img-top rounded" alt="@c.Name" />
-                            <div class="card-body p-2">
-                                <NavLink class="text-decoration-none fw-bold text-success" href="@($"/CharacterDetails/{c.Id}")">
-                            @c.Name
-                                </NavLink>
-                                <p class="text-muted small mb-0">@c.Status</p>
-                                <p class="text-muted small mb-0">Appears in: @c.Episode.Count episodes</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="character-card">
+                <div class="character-image">
+                    <img src="@c.Image" alt="@c.Name" />
+                    <div class="status-badge @c.Status.ToLower()">@c.Status</div>
+                </div>
+                <div class="character-info">
+                    <NavLink href="@($"/CharacterDetails/{c.Id}")" class="character-name">@c.Name</NavLink>
+                    <p class="episode-count">@c.Episode.Count episodes</p>
+                </div>
+            </div>
         }
-        </div>
+    </div>
 }
+
+<style>
+    .hero-header {
+        text-align: center;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #fff;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-subtitle {
+        color: #e0e7ff;
+        font-size: 1.2rem;
+        margin: 10px 0 0 0;
+    }
+
+    .filter-container {
+        background: #fff;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+    }
+
+    .status-filters {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 12px 30px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid #e0e7ff;
+        color: #667eea;
+    }
+
+    .filter-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .filter-btn.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+        border-color: #667eea;
+    }
+
+    .filter-btn.alive.active { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); border-color: #11998e; }
+    .filter-btn.dead.active { background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%); border-color: #eb3349; }
+    .filter-btn.unknown.active { background: linear-gradient(135deg, #757f9a 0%, #d7dde8 100%); border-color: #757f9a; }
+
+    .letter-filters {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .letter-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid #e0e7ff;
+        color: #667eea;
+    }
+
+    .letter-btn:hover {
+        background: #f3f4f6;
+        transform: scale(1.1);
+    }
+
+    .letter-btn.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+        border-color: #667eea;
+    }
+
+    .characters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 25px;
+    }
+
+    .character-card {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+    }
+
+    .character-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    .character-image {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .character-image img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+
+    .character-card:hover .character-image img {
+        transform: scale(1.1);
+    }
+
+    .status-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .status-badge.alive { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+    .status-badge.dead { background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%); }
+    .status-badge.unknown { background: linear-gradient(135deg, #757f9a 0%, #d7dde8 100%); }
+
+    .character-info {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .character-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #1f2937;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .character-name:hover {
+        color: #667eea;
+    }
+
+    .episode-count {
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .no-results {
+        text-align: center;
+        padding: 60px 20px;
+        font-size: 1.5rem;
+        color: #6b7280;
+    }
+</style>
 
 @code {
     [Parameter]
     public string? StatusFilter { get; set; }
+    
+    [Parameter]
+    public string? Letter { get; set; }
 
     List<Character> characters = new();
     List<Character> filteredCharacters = new();
-    string searchName = "";
     string filterMessage = "Loading characters...";
 
     protected override async Task OnInitializedAsync()
     {
+        if (characters.Any()) return;
+
         string? url = "https://rickandmortyapi.com/api/character";
-        characters.Clear();
 
         while (!string.IsNullOrEmpty(url))
         {
@@ -87,38 +261,33 @@ else
                 }
                 else break;
             }
-            catch
-            {
-                break;
-            }
-
+            catch { break; }
             await Task.Yield();
         }
 
-        ApplyInitialFilter();
+        ApplyFilter();
     }
 
-    private void ApplyInitialFilter()
+    protected override void OnParametersSet()
     {
-        filteredCharacters = string.IsNullOrEmpty(StatusFilter)
-            ? new List<Character>(characters)
-            : characters.Where(c => c.Status.Equals(StatusFilter, StringComparison.OrdinalIgnoreCase)).ToList();
-
-        filterMessage = string.IsNullOrEmpty(StatusFilter)
-            ? $"All characters loaded: {filteredCharacters.Count}"
-            : $"{StatusFilter} characters loaded: {filteredCharacters.Count}";
+        if (characters.Any())
+        {
+            ApplyFilter();
+        }
     }
 
-    private void ApplySearch()
+    private void ApplyFilter()
     {
+        var isAllStatus = string.IsNullOrEmpty(StatusFilter) || StatusFilter.Equals("All", StringComparison.OrdinalIgnoreCase);
+        
         filteredCharacters = characters
             .Where(c =>
-                (string.IsNullOrEmpty(StatusFilter) || c.Status.Equals(StatusFilter, StringComparison.OrdinalIgnoreCase)) &&
-                (string.IsNullOrEmpty(searchName) || c.Name.Contains(searchName, StringComparison.OrdinalIgnoreCase))
+                (isAllStatus || c.Status.Equals(StatusFilter, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrEmpty(Letter) || c.Name.StartsWith(Letter, StringComparison.OrdinalIgnoreCase))
             )
             .ToList();
 
-        filterMessage = $"Search applied: {filteredCharacters.Count} characters match!";
+        filterMessage = $"Found {filteredCharacters.Count} characters";
     }
 
     public class Character

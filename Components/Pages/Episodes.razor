@@ -3,59 +3,164 @@
 @using RickAndMortyAPI.Components.Data
 @using Microsoft.AspNetCore.Components.Routing
 
-<h3 class="text-center mb-4" style="color:#00FFCC; text-shadow:2px 2px #000;">Rick and Morty Episodes</h3>
+<div class="hero-header">
+    <h1 class="hero-title">Rick and Morty Episodes</h1>
+    <p class="hero-subtitle">@episodes.Count total episodes across 5 seasons</p>
+</div>
 
 @if (episodes == null || !episodes.Any())
 {
-            <p class="text-center text-warning">Loading episodes...</p>
+    <div class="loading">Loading episodes...</div>
 }
 else
 {
-            <div class="container-fluid">
-                <div class="row g-3">
-            @foreach (var season in new[] { "S01", "S02", "S03", "S04", "S05" })
-            {
-                var seasonEpisodes = episodes
-                    .Where(e => e.episode.StartsWith(season))
-                    .OrderBy(e => e.id)
-                    .ToList();
+    <div class="seasons-container">
+        @foreach (var season in new[] { "S01", "S02", "S03", "S04", "S05" })
+        {
+            var seasonEpisodes = episodes
+                .Where(e => e.episode.StartsWith(season))
+                .OrderBy(e => e.id)
+                .ToList();
 
-                if (seasonEpisodes.Any())
-                {
-                                            <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                                                <h5 class="text-center mb-2" style="color:#FFCC00; text-shadow:1px 1px #000;">Season @season.Substring(1)</h5>
-                                                <ul class="list-group season-list">
-                            @foreach (var ep in seasonEpisodes)
-                            {
-                                                                <li class="list-group-item episode-item p-2 mb-1" style="background: #1b1b1b; border: 1px solid #00FFCC; border-radius:5px;">
-                                                                    <NavLink class="text-decoration-none fw-bold text-success episode-name"
-                                                                             href="@($"/EpisodeDetails/{ep.id}")">
-                                        @ep.name
-                                                                    </NavLink>
-                                                                    <span class="text-muted d-block small">@ep.episode</span>
-                                                                </li>
-                            }
-                                                </ul>
-                                            </div>
-                }
-            }
+            if (seasonEpisodes.Any())
+            {
+                <div class="season-card">
+                    <div class="season-header">
+                        <h2 class="season-title">Season @season.Substring(1)</h2>
+                        <span class="episode-badge">@seasonEpisodes.Count episodes</span>
+                    </div>
+                    <div class="episodes-list">
+                        @foreach (var ep in seasonEpisodes)
+                        {
+                            <NavLink href="@($"/EpisodeDetails/{ep.id}")" class="episode-item">
+                                <div class="episode-number">@ep.episode</div>
+                                <div class="episode-name">@ep.name</div>
+                            </NavLink>
+                        }
+                    </div>
                 </div>
-            </div>
+            }
+        }
+    </div>
 }
 
 <style>
+    .hero-header {
+        text-align: center;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #fff;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-subtitle {
+        color: #fff;
+        font-size: 1.2rem;
+        margin: 10px 0 0 0;
+        opacity: 0.9;
+    }
+
+    .loading {
+        text-align: center;
+        padding: 60px 20px;
+        font-size: 1.5rem;
+        color: #6b7280;
+    }
+
+    .seasons-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+
+    .season-card {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+    }
+
+    .season-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    .season-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .season-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #fff;
+        margin: 0;
+    }
+
+    .episode-badge {
+        background: rgba(255,255,255,0.3);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .episodes-list {
+        padding: 15px;
+    }
+
+    .episode-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 12px 15px;
+        margin-bottom: 8px;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: all 0.3s;
+        background: #f9fafb;
+    }
+
     .episode-item:hover {
-        transform: scale(1.05);
-        transition: 0.3s;
-        cursor: pointer;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transform: translateX(5px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
     }
 
-    .episode-name:hover {
-        text-decoration: underline;
+    .episode-number {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #6b7280;
+        min-width: 50px;
     }
 
-    .season-list {
-        padding-left: 0;
+    .episode-item:hover .episode-number {
+        color: #fff;
+    }
+
+    .episode-name {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1f2937;
+        flex: 1;
+    }
+
+    .episode-item:hover .episode-name {
+        color: #fff;
     }
 </style>
 

@@ -1,7 +1,224 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Rick and Morty API Explorer</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="hero-header">
+    <h1 class="hero-title">Rick and Morty API Explorer</h1>
+    <p class="hero-subtitle">A comprehensive Blazor application showcasing advanced API integration</p>
+</div>
 
-Welcome to your new app.
+<div class="content-container">
+    <div class="intro-section">
+        <h2 class="section-title">About This Project</h2>
+        <p class="section-text">
+            This application demonstrates modern web development practices using Blazor Server and the Rick and Morty API. 
+            It showcases real-time data fetching, advanced filtering, data visualization, and responsive design principles.
+        </p>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">📺</div>
+            <h3 class="feature-title">Episodes Browser</h3>
+            <p class="feature-text">Browse all 51 episodes organized by season with detailed character information for each episode.</p>
+            <a href="/Episodes" class="feature-link">Explore Episodes →</a>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3 class="feature-title">Character Database</h3>
+            <p class="feature-text">Search through 800+ characters with advanced filtering by status (Alive/Dead/Unknown) and alphabetical sorting.</p>
+            <a href="/Characters" class="feature-link">View Characters →</a>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">Data Analytics</h3>
+            <p class="feature-text">Comprehensive statistics and visualizations including species distribution, survival rates, and character insights.</p>
+            <a href="/Analytics" class="feature-link">View Analytics →</a>
+        </div>
+    </div>
+
+
+    <div class="api-section">
+        <h2 class="section-title">API Information</h2>
+        <div class="api-info">
+            <p><strong>Data Source:</strong> The Rick and Morty API (https://rickandmortyapi.com)</p>
+            <p><strong>Total Characters:</strong> 826 characters with detailed information</p>
+            <p><strong>Total Episodes:</strong> 51 episodes across 5 seasons</p>
+            <p><strong>Data Points:</strong> Character status, species, gender, origin, location, and episode appearances</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hero-header {
+        text-align: center;
+        padding: 50px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #fff;
+        margin: 0 0 15px 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-subtitle {
+        color: #e0e7ff;
+        font-size: 1.3rem;
+        margin: 0;
+    }
+
+    .content-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .intro-section, .api-section {
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 20px;
+    }
+
+    .section-text {
+        font-size: 1.1rem;
+        color: #6b7280;
+        line-height: 1.8;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .feature-card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+        text-align: center;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    .feature-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 15px;
+    }
+
+    .feature-text {
+        color: #6b7280;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .feature-link {
+        display: inline-block;
+        padding: 10px 25px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    .feature-link:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .capabilities-section {
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+    }
+
+    .capabilities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 20px;
+    }
+
+    .capability-item {
+        display: flex;
+        gap: 15px;
+        padding: 20px;
+        background: #f9fafb;
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
+    }
+
+    .capability-icon {
+        font-size: 2rem;
+    }
+
+    .capability-item h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin: 0 0 8px 0;
+    }
+
+    .capability-item p {
+        font-size: 0.95rem;
+        color: #6b7280;
+        margin: 0;
+    }
+
+    .api-info {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .api-info p {
+        font-size: 1.05rem;
+        color: #1f2937;
+        margin: 0;
+    }
+
+    .api-info strong {
+        color: #667eea;
+    }
+
+    @@media (max-width: 768px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .capabilities-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
