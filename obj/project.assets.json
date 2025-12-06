@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Karls Pc\\Documents\\BLAZOR\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI.csproj",
       "projectName": "RickAndMortyAPI",
-      "projectPath": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI.csproj",
+      "projectPath": "C:\\Users\\Karls Pc\\Documents\\BLAZOR\\SoftwareArchitectureBlazorProject-X00189280\\RickAndMortyAPI.csproj",
       "packagesPath": "C:\\Users\\Karls Pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Karls Pc\\Documents\\SoftwareArchCA3\\SoftwareArchitectureBlazorProject-X00189280\\obj\\",
+      "outputPath": "C:\\Users\\Karls Pc\\Documents\\BLAZOR\\SoftwareArchitectureBlazorProject-X00189280\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Karls Pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
