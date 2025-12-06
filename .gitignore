@@ -1,2 +1,50 @@
-# Visual Studio temporary files
+# Build folders
+bin/
+obj/
+out/
+
+# Visual Studio files
 .vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider files
+.idea/
+
+# VS Code files
+.vscode/
+
+# NuGet
+*.nupkg
+packages/
+# Uncomment if you have a NuGet local cache
+# .nuget/
+
+# ASP.NET / Blazor
+wwwroot/lib/
+*.dbmdl
+
+# Logs
+*.log
+*.vspscc
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test output
+TestResults/
+*.trx
+
+# Backup files
+*.bak
+*.swp
+
+# JetBrains Rider local history
+.idea/.idea.*
+
+# Publish folder
+publish/
