@@ -1,6 +1,8 @@
 ﻿@page "/Characters"
 @page "/Characters/{StatusFilter}"
 @page "/Characters/{StatusFilter}/{Letter}"
+@page "/Characters/{StatusFilter}/{Letter}/{SpeciesFilter}"
+@page "/Characters/species/{SpeciesFilter}"
 @inject HttpClient Http
 @inject NavigationManager Navigation
 @using System.Text.Json.Serialization
@@ -23,6 +25,17 @@
         {
             var url = string.IsNullOrEmpty(StatusFilter) ? $"/Characters/All/{letter}" : $"/Characters/{StatusFilter}/{letter}";
             <a href="@url" class="letter-btn @(Letter == letter.ToString() ? "active" : "")">@letter</a>
+        }
+    </div>
+    
+    <div class="species-filters">
+        @foreach (var species in availableSpecies)
+        {
+            <a href="@($"/Characters/species/{species}")" class="filter-btn species @(SpeciesFilter == species ? "active" : "")">@species</a>
+        }
+        @if (!string.IsNullOrEmpty(SpeciesFilter))
+        {
+            <a href="/Characters" class="filter-btn clear">Clear Species</a>
         }
     </div>
 </div>
@@ -149,6 +162,29 @@ else
         border-color: #667eea;
     }
 
+    .species-filters {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn.species.active {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border-color: #f093fb;
+    }
+
+    .filter-btn.clear {
+        background: #f3f4f6;
+        color: #6b7280;
+        border-color: #d1d5db;
+    }
+
+    .filter-btn.clear:hover {
+        background: #e5e7eb;
+    }
+
     .characters-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -238,9 +274,13 @@ else
     
     [Parameter]
     public string? Letter { get; set; }
+    
+    [Parameter]
+    public string? SpeciesFilter { get; set; }
 
     List<Character> characters = new();
     List<Character> filteredCharacters = new();
+    List<string> availableSpecies = new();
     string filterMessage = "Loading characters...";
 
     protected override async Task OnInitializedAsync()
@@ -283,9 +323,20 @@ else
         filteredCharacters = characters
             .Where(c =>
                 (isAllStatus || c.Status.Equals(StatusFilter, StringComparison.OrdinalIgnoreCase)) &&
-                (string.IsNullOrEmpty(Letter) || c.Name.StartsWith(Letter, StringComparison.OrdinalIgnoreCase))
+                (string.IsNullOrEmpty(Letter) || c.Name.StartsWith(Letter, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrEmpty(SpeciesFilter) || c.Species.Equals(SpeciesFilter, StringComparison.OrdinalIgnoreCase))
             )
             .ToList();
+
+        if (!availableSpecies.Any())
+        {
+            availableSpecies = characters
+                .Select(c => c.Species)
+                .Where(s => !string.IsNullOrEmpty(s))
+                .Distinct()
+                .OrderBy(s => s)
+                .ToList();
+        }
 
         filterMessage = $"Found {filteredCharacters.Count} characters";
     }
@@ -295,6 +346,7 @@ else
         [JsonPropertyName("id")] public int Id { get; set; }
         [JsonPropertyName("name")] public string Name { get; set; } = "";
         [JsonPropertyName("status")] public string Status { get; set; } = "";
+        [JsonPropertyName("species")] public string Species { get; set; } = "";
         [JsonPropertyName("image")] public string Image { get; set; } = "";
         [JsonPropertyName("episode")] public List<string> Episode { get; set; } = new();
     }
