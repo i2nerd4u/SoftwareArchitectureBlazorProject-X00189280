@@ -5,6 +5,7 @@
 
 trigger:
 - main
+- karl
 
 pool:
   vmImage: 'windows-latest'
@@ -27,6 +28,15 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: PowerShell@2
+  displayName: 'Install Playwright Browsers'
+  inputs:
+    targetType: 'inline'
+    script: |
+      cd RickAndMortyAPI.E2ETests
+      dotnet build
+      pwsh bin/Release/net9.0/playwright.ps1 install chromium
 
 - task: DotNetCoreCLI@2
   displayName: 'Run Tests'
