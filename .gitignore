@@ -1,24 +1,18 @@
-# Build artifacts
+## Build output
 bin/
 obj/
 
-# Visual Studio things
+## Visual Studio
 .vs/
 *.user
 *.suo
 
-# Build results
-*.dll
-*.exe
-*.pdb
-
-# NuGet
-*.nupkg
-packages/
-*.snk
-project.lock.json
-*.nuget.props
-*.nuget.targets
-
-# Logs
+## Logs
 *.log
+
+## IDE junk
+*.vscode/
+*.DS_Store
+
+## ASP.NET / Blazor
+*/wwwroot/*.staticwebassets.json
