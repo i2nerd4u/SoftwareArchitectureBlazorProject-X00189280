@@ -73,7 +73,7 @@
    
 </div>
 
-@if (pagedCharacters == null || !pagedCharacters.Any())
+@if (filteredCharacters == null || !filteredCharacters.Any())
 {
     <div class="no-results">
         <p>No characters found</p>
@@ -82,7 +82,7 @@
 else
 {
     <div class="characters-grid">
-        @foreach (var c in pagedCharacters)
+        @foreach (var c in filteredCharacters)
         {
             <div class="character-card">
                 <div class="character-image">
@@ -95,12 +95,6 @@ else
                 </div>
             </div>
         }
-    </div>
-    
-    <div class="pagination">
-        <button class="page-btn" @onclick="PreviousPage" disabled="@(currentPage == 1)">Previous</button>
-        <span class="page-info">Page @currentPage of @totalPages</span>
-        <button class="page-btn" @onclick="NextPage" disabled="@(currentPage == totalPages)">Next</button>
     </div>
 }
 
@@ -393,40 +387,7 @@ else
         margin-top: 5px;
     }
 
-    .pagination {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        margin-top: 30px;
-    }
 
-    .page-btn {
-        padding: 10px 25px;
-        border: 2px solid #667eea;
-        background: #fff;
-        color: #667eea;
-        border-radius: 20px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .page-btn:hover:not(:disabled) {
-        background: #667eea;
-        color: #fff;
-        transform: translateY(-2px);
-    }
-
-    .page-btn:disabled {
-        opacity: 0.3;
-        cursor: not-allowed;
-    }
-
-    .page-info {
-        font-weight: 600;
-        color: #667eea;
-    }
 </style>
 
 @code {
@@ -447,15 +408,11 @@ else
 
     List<Character> characters = new();
     List<Character> filteredCharacters = new();
-    List<Character> pagedCharacters = new();
     List<string> availableSpecies = new();
     List<string> availableGenders = new();
     string filterMessage = "Loading characters...";
     string searchTerm = "";
     string searchError = "";
-    int currentPage = 1;
-    int pageSize = 20;
-    int totalPages = 1;
 
     protected override async Task OnInitializedAsync()
     {
@@ -486,7 +443,6 @@ else
     {
         if (characters.Any())
         {
-            currentPage = 1;
             ApplyFilter();
         }
     }
@@ -499,7 +455,6 @@ else
             return;
         }
         searchError = "";
-        currentPage = 1;
         ApplyFilter();
     }
 
@@ -538,35 +493,7 @@ else
                 .ToList();
         }
 
-        totalPages = (int)Math.Ceiling(filteredCharacters.Count / (double)pageSize);
-        if (totalPages == 0) totalPages = 1;
-        if (currentPage > totalPages) currentPage = totalPages;
-        
-        pagedCharacters = filteredCharacters
-            .Skip((currentPage - 1) * pageSize)
-            .Take(pageSize)
-            .ToList();
-
-        filterMessage = $"Found {filteredCharacters.Count} characters (Page {currentPage}/{totalPages})";
-        OnSearchChanged();
-    }
-
-    private void NextPage()
-    {
-        if (currentPage < totalPages)
-        {
-            currentPage++;
-            ApplyFilter();
-        }
-    }
-
-    private void PreviousPage()
-    {
-        if (currentPage > 1)
-        {
-            currentPage--;
-            ApplyFilter();
-        }
+        filterMessage = $"Found {filteredCharacters.Count} characters";
     }
 
     private string BuildUrl(string? status, string? letter, string? species, string? gender)

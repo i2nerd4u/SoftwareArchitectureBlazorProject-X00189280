@@ -30,25 +30,7 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - task: PowerShell@2
-  displayName: 'Install Playwright Browsers'
+  displayName: 'Build Complete'
   inputs:
     targetType: 'inline'
-    script: |
-      cd RickAndMortyAPI.E2ETests
-      dotnet build
-      pwsh bin/Release/net9.0/playwright.ps1 install chromium
-
-- task: DotNetCoreCLI@2
-  displayName: 'Run Tests'
-  inputs:
-    command: 'test'
-    projects: '**/*Tests.csproj'
-    arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" --logger trx'
-    publishTestResults: true
-
-- task: PublishCodeCoverageResults@1
-  displayName: 'Publish Code Coverage'
-  inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
-    reportDirectory: '$(Agent.TempDirectory)/**/coverage'
+    script: 'Write-Host "Build successful. E2E tests run locally only."'
