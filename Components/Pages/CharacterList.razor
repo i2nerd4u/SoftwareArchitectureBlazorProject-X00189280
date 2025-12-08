@@ -9,13 +9,7 @@
     <p class="hero-subtitle">@filterMessage</p>
 </div>
 
-<div class="search-container">
-    <input type="text" @bind="searchTerm" @bind:event="oninput" placeholder="Search characters (min 2 chars)" class="search-input" maxlength="50" />
-    @if (!string.IsNullOrEmpty(searchError))
-    {
-        <span class="error-text">@searchError</span>
-    }
-</div>
+
 
 <div class="filter-container">
     <div class="filter-section">
@@ -359,34 +353,6 @@ else
         color: #6b7280;
     }
 
-    .search-container {
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .search-input {
-        width: 100%;
-        max-width: 500px;
-        padding: 12px 20px;
-        border: 2px solid #e0e7ff;
-        border-radius: 25px;
-        font-size: 1rem;
-        transition: all 0.3s;
-    }
-
-    .search-input:focus {
-        outline: none;
-        border-color: #667eea;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    }
-
-    .error-text {
-        color: #eb3349;
-        font-size: 0.85rem;
-        display: block;
-        margin-top: 5px;
-    }
-
 
 </style>
 
@@ -411,8 +377,6 @@ else
     List<string> availableSpecies = new();
     List<string> availableGenders = new();
     string filterMessage = "Loading characters...";
-    string searchTerm = "";
-    string searchError = "";
 
     protected override async Task OnInitializedAsync()
     {
@@ -447,32 +411,19 @@ else
         }
     }
 
-    private void OnSearchChanged()
-    {
-        if (!string.IsNullOrEmpty(searchTerm) && searchTerm.Length < 2)
-        {
-            searchError = "Search must be at least 2 characters";
-            return;
-        }
-        searchError = "";
-        ApplyFilter();
-    }
-
     private void ApplyFilter()
     {
         var isAllStatus = string.IsNullOrEmpty(StatusFilter) || StatusFilter.Equals("All", StringComparison.OrdinalIgnoreCase) || StatusFilter == "_";
         var hasLetter = !string.IsNullOrEmpty(Letter) && Letter != "_";
         var hasSpecies = !string.IsNullOrEmpty(SpeciesFilter) && SpeciesFilter != "_";
         var hasGender = !string.IsNullOrEmpty(GenderFilter) && GenderFilter != "_";
-        var hasSearch = !string.IsNullOrEmpty(searchTerm) && searchTerm.Length >= 2;
         
         filteredCharacters = characters
             .Where(c =>
                 (isAllStatus || c.Status.Equals(StatusFilter, StringComparison.OrdinalIgnoreCase)) &&
                 (!hasLetter || c.Name.StartsWith(Letter, StringComparison.OrdinalIgnoreCase)) &&
                 (!hasSpecies || c.Species.Equals(SpeciesFilter, StringComparison.OrdinalIgnoreCase)) &&
-                (!hasGender || c.Gender.Equals(GenderFilter, StringComparison.OrdinalIgnoreCase)) &&
-                (!hasSearch || c.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                (!hasGender || c.Gender.Equals(GenderFilter, StringComparison.OrdinalIgnoreCase))
             )
             .ToList();
 
