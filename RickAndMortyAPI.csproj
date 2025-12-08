@@ -11,6 +11,10 @@
     <Content Remove="RickAndMortyAPI.Tests\**" />
     <EmbeddedResource Remove="RickAndMortyAPI.Tests\**" />
     <None Remove="RickAndMortyAPI.Tests\**" />
+    <Compile Remove="RickAndMortyAPI.E2ETests\**" />
+    <Content Remove="RickAndMortyAPI.E2ETests\**" />
+    <EmbeddedResource Remove="RickAndMortyAPI.E2ETests\**" />
+    <None Remove="RickAndMortyAPI.E2ETests\**" />
   </ItemGroup>
 
 </Project>
