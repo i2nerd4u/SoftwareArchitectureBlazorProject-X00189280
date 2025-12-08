@@ -1,68 +1,32 @@
-﻿@page "/Characters"
-@page "/Characters/{StatusFilter}/{Letter}/{SpeciesFilter}/{GenderFilter}"
+@page "/Locations"
+@page "/Locations/{StatusFilter}"
+@page "/Locations/{StatusFilter}/{Letter}"
+@page "/Locations/species/{SpeciesFilter}"
+@page "/Locations/gender/{GenderFilter}"
+@page "/Locations/location/{LocationFilter}"
 @inject HttpClient Http
 @inject NavigationManager Navigation
 @using System.Text.Json.Serialization
 
 <div class="hero-header">
-    <h1 class="hero-title">Rick and Morty Characters</h1>
+    <h1 class="hero-title">Characters by Location</h1>
     <p class="hero-subtitle">@filterMessage</p>
 </div>
 
 <div class="filter-container">
     <div class="filter-section">
-        <h3 class="filter-title">Status</h3>
-        <div class="status-filters">
-            <a href="@BuildUrl("All", Letter, SpeciesFilter, GenderFilter)" class="filter-btn @((string.IsNullOrEmpty(StatusFilter) || StatusFilter == "All") ? "active" : "")">All</a>
-            <a href="@BuildUrl("Alive", Letter, SpeciesFilter, GenderFilter)" class="filter-btn alive @(StatusFilter == "Alive" ? "active" : "")">Alive</a>
-            <a href="@BuildUrl("Dead", Letter, SpeciesFilter, GenderFilter)" class="filter-btn dead @(StatusFilter == "Dead" ? "active" : "")">Dead</a>
-            <a href="@BuildUrl("unknown", Letter, SpeciesFilter, GenderFilter)" class="filter-btn unknown @(StatusFilter == "unknown" ? "active" : "")">Unknown</a>
-        </div>
-    </div>
-    
-    <div class="filter-section">
-        <h3 class="filter-title">Letters</h3>
-        <div class="letter-filters">
-            @foreach (var letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        <h3 class="filter-title">Locations</h3>
+        <div class="location-filters">
+            @foreach (var location in availableLocations)
             {
-                <a href="@BuildUrl(StatusFilter, letter.ToString(), SpeciesFilter, GenderFilter)" class="letter-btn @(Letter == letter.ToString() ? "active" : "")">@letter</a>
+                <a href="@($"/Locations/location/{location}")" class="location-btn @(LocationFilter == location ? "active" : "")">@location</a>
             }
-            @if (!string.IsNullOrEmpty(Letter))
+            @if (!string.IsNullOrEmpty(LocationFilter))
             {
-                <a href="@BuildUrl(StatusFilter, null, SpeciesFilter, GenderFilter)" class="filter-btn clear">Clear Letter</a>
+                <a href="/Locations" class="filter-btn clear">Clear Location</a>
             }
         </div>
     </div>
-    
-    <div class="filter-section">
-        <h3 class="filter-title">Species</h3>
-        <div class="species-filters">
-            @foreach (var species in availableSpecies)
-            {
-                <a href="@BuildUrl(StatusFilter, Letter, species, GenderFilter)" class="filter-btn species @(SpeciesFilter == species ? "active" : "")">@species</a>
-            }
-            @if (!string.IsNullOrEmpty(SpeciesFilter))
-            {
-                <a href="@BuildUrl(StatusFilter, Letter, null, GenderFilter)" class="filter-btn clear">Clear Species</a>
-            }
-        </div>
-    </div>
-    
-    <div class="filter-section">
-        <h3 class="filter-title">Gender</h3>
-        <div class="gender-filters">
-            @foreach (var gender in availableGenders)
-            {
-                <a href="@BuildUrl(StatusFilter, Letter, SpeciesFilter, gender)" class="filter-btn gender @(GenderFilter == gender ? "active" : "")">@gender</a>
-            }
-            @if (!string.IsNullOrEmpty(GenderFilter))
-            {
-                <a href="@BuildUrl(StatusFilter, Letter, SpeciesFilter, null)" class="filter-btn clear">Clear Gender</a>
-            }
-        </div>
-    </div>
-    
-   
 </div>
 
 @if (filteredCharacters == null || !filteredCharacters.Any())
@@ -93,15 +57,15 @@ else
 <style>
     .hero-header {
         text-align: center;
-        padding: 20px;
+        padding: 40px 20px;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 15px;
-        margin-bottom: 15px;
+        border-radius: 20px;
+        margin-bottom: 30px;
         box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 800;
         color: #fff;
         margin: 0;
@@ -110,134 +74,44 @@ else
 
     .hero-subtitle {
         color: #e0e7ff;
-        font-size: 1rem;
-        margin: 8px 0 0 0;
+        font-size: 1.2rem;
+        margin: 10px 0 0 0;
     }
 
     .filter-container {
         background: #fff;
-        padding: 15px;
+        padding: 25px;
         border-radius: 15px;
         box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .filter-section {
-        margin-bottom: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #e0e7ff;
-    }
-
-    .filter-section:last-child {
-        border-bottom: none;
+        margin-bottom: 0;
     }
 
     .filter-title {
-        font-size: 0.95rem;
+        font-size: 1.1rem;
         font-weight: 700;
         color: #667eea;
-        margin: 0 0 10px 0;
+        margin: 0 0 15px 0;
         text-align: center;
     }
 
-    .status-filters {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .filter-btn {
-        padding: 8px 20px;
-        border-radius: 20px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: all 0.3s;
-        border: 2px solid #e0e7ff;
-        color: #667eea;
-    }
-
-    .filter-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-    }
-
-    .filter-btn.active {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: #fff;
-        border-color: #667eea;
-    }
-
-    .filter-btn.alive.active { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); border-color: #11998e; }
-    .filter-btn.dead.active { background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%); border-color: #eb3349; }
-    .filter-btn.unknown.active { background: linear-gradient(135deg, #757f9a 0%, #d7dde8 100%); border-color: #757f9a; }
-
-    .letter-filters {
-        display: flex;
-        gap: 8px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .letter-btn {
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.85rem;
-        transition: all 0.3s;
-        border: 2px solid #e0e7ff;
-        color: #667eea;
-    }
-
-    .letter-btn:hover {
-        background: #f3f4f6;
-        transform: scale(1.1);
-    }
-
-    .letter-btn.active {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: #fff;
-        border-color: #667eea;
-    }
-
-    .species-filters {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .filter-btn.species.active {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        border-color: #f093fb;
-    }
-
     .filter-btn.clear {
+        padding: 6px 12px;
+        border-radius: 15px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.75rem;
+        transition: all 0.3s;
         background: #f3f4f6;
         color: #6b7280;
-        border-color: #d1d5db;
+        border: 2px solid #d1d5db;
     }
 
     .filter-btn.clear:hover {
         background: #e5e7eb;
-    }
-
-    .gender-filters {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .filter-btn.gender.active {
-        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-        border-color: #fa709a;
     }
 
     .location-filters {
@@ -370,8 +244,7 @@ else
 
     List<Character> characters = new();
     List<Character> filteredCharacters = new();
-    List<string> availableSpecies = new();
-    List<string> availableGenders = new();
+    List<string> availableLocations = new();
     string filterMessage = "Loading characters...";
 
     protected override async Task OnInitializedAsync()
@@ -409,47 +282,29 @@ else
 
     private void ApplyFilter()
     {
-        var isAllStatus = string.IsNullOrEmpty(StatusFilter) || StatusFilter.Equals("All", StringComparison.OrdinalIgnoreCase) || StatusFilter == "_";
-        var hasLetter = !string.IsNullOrEmpty(Letter) && Letter != "_";
-        var hasSpecies = !string.IsNullOrEmpty(SpeciesFilter) && SpeciesFilter != "_";
-        var hasGender = !string.IsNullOrEmpty(GenderFilter) && GenderFilter != "_";
+        var isAllStatus = string.IsNullOrEmpty(StatusFilter) || StatusFilter.Equals("All", StringComparison.OrdinalIgnoreCase);
         
         filteredCharacters = characters
             .Where(c =>
                 (isAllStatus || c.Status.Equals(StatusFilter, StringComparison.OrdinalIgnoreCase)) &&
-                (!hasLetter || c.Name.StartsWith(Letter, StringComparison.OrdinalIgnoreCase)) &&
-                (!hasSpecies || c.Species.Equals(SpeciesFilter, StringComparison.OrdinalIgnoreCase)) &&
-                (!hasGender || c.Gender.Equals(GenderFilter, StringComparison.OrdinalIgnoreCase))
+                (string.IsNullOrEmpty(Letter) || c.Name.StartsWith(Letter, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrEmpty(SpeciesFilter) || c.Species.Equals(SpeciesFilter, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrEmpty(GenderFilter) || c.Gender.Equals(GenderFilter, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrEmpty(LocationFilter) || c.Location.Equals(LocationFilter, StringComparison.OrdinalIgnoreCase))
             )
             .ToList();
 
-        if (!availableSpecies.Any())
+        if (!availableLocations.Any())
         {
-            availableSpecies = characters
-                .Select(c => c.Species)
-                .Where(s => !string.IsNullOrEmpty(s))
+            availableLocations = characters
+                .Select(c => c.Location)
+                .Where(l => !string.IsNullOrEmpty(l))
                 .Distinct()
-                .OrderBy(s => s)
-                .ToList();
-                
-            availableGenders = characters
-                .Select(c => c.Gender)
-                .Where(g => !string.IsNullOrEmpty(g))
-                .Distinct()
-                .OrderBy(g => g)
+                .OrderBy(l => l)
                 .ToList();
         }
 
         filterMessage = $"Found {filteredCharacters.Count} characters";
-    }
-
-    private string BuildUrl(string? status, string? letter, string? species, string? gender)
-    {
-        status = string.IsNullOrEmpty(status) ? "All" : status;
-        letter = string.IsNullOrEmpty(letter) ? "_" : letter;
-        species = string.IsNullOrEmpty(species) ? "_" : species;
-        gender = string.IsNullOrEmpty(gender) ? "_" : gender;
-        return $"/Characters/{status}/{letter}/{species}/{gender}";
     }
 
     public class Character
