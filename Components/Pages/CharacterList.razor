@@ -11,7 +11,18 @@
 </div>
 
 <div class="search-container">
-    <input type="text" @bind="searchText" placeholder="Search characters..." class="search-input" />
+    <div class="search-wrapper">
+        <input type="text" @bind="searchText" @bind:event="oninput" @onkeydown="HandleKeyDown" placeholder="Search characters..." class="search-input" />
+        @if (showAutocomplete && autocompleteResults.Any())
+        {
+            <div class="autocomplete-dropdown">
+                @foreach (var name in autocompleteResults.Take(10))
+                {
+                    <div class="autocomplete-item" @onclick="() => SelectAutocomplete(name)">@name</div>
+                }
+            </div>
+        }
+    </div>
     <button @onclick="ApplyFilter" class="search-btn">Search</button>
 </div>
 
@@ -369,13 +380,44 @@ else
         gap: 10px;
     }
 
-    .search-input {
+    .search-wrapper {
         flex: 1;
+        position: relative;
+    }
+
+    .search-input {
+        width: 100%;
         padding: 15px 20px;
         border: 2px solid #e0e7ff;
         border-radius: 10px;
         font-size: 1rem;
         transition: all 0.3s;
+    }
+
+    .autocomplete-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border: 2px solid #e0e7ff;
+        border-top: none;
+        border-radius: 0 0 10px 10px;
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 1000;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .autocomplete-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .autocomplete-item:hover {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
     }
 
     .search-input:focus {
@@ -459,8 +501,10 @@ else
     List<Character> pagedCharacters = new();
     List<string> availableSpecies = new();
     List<string> availableGenders = new();
+    List<string> autocompleteResults = new();
     string filterMessage = "Loading characters...";
     string searchText = "";
+    bool showAutocomplete = false;
     int currentPage = 1;
     int pageSize = 20;
     int totalPages = 1;
@@ -494,8 +538,47 @@ else
     {
         if (characters.Any())
         {
-            currentPage = 1;
+            showAutocomplete = false;
             ApplyFilter();
+        }
+    }
+
+    private void UpdateAutocomplete()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            showAutocomplete = false;
+            autocompleteResults.Clear();
+        }
+        else
+        {
+            autocompleteResults = characters
+                .Where(c => c.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase))
+                .Select(c => c.Name)
+                .Distinct()
+                .OrderBy(n => n)
+                .ToList();
+            showAutocomplete = autocompleteResults.Any();
+        }
+    }
+
+    private void SelectAutocomplete(string name)
+    {
+        searchText = name;
+        showAutocomplete = false;
+        ApplyFilter();
+    }
+
+    private void HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            showAutocomplete = false;
+            ApplyFilter();
+        }
+        else
+        {
+            UpdateAutocomplete();
         }
     }
 
