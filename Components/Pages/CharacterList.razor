@@ -6,12 +6,12 @@
 @using System.Text.Json.Serialization
 
 <div class="hero-header">
-    <h1 class="hero-title">Rick and Morty Characters :) </h1>
+    <h1 class="hero-title">Rick and Morty Characters </h1>
     <p class="hero-subtitle">@filterMessage</p>
 </div>
 
 <div class="search-container">
-    <input type="text" @bind="searchText" @onkeypress="HandleKeyPress" placeholder="Search characters..." class="search-input" />
+    <input type="text" @bind="searchText" placeholder="Search characters..." class="search-input" />
     <button @onclick="ApplyFilter" class="search-btn">Search</button>
 </div>
 
@@ -494,6 +494,7 @@ else
     {
         if (characters.Any())
         {
+            currentPage = 1;
             ApplyFilter();
         }
     }
@@ -526,14 +527,6 @@ else
             .Skip((currentPage - 1) * pageSize)
             .Take(pageSize)
             .ToList();
-    }
-
-    private void HandleKeyPress(KeyboardEventArgs e)
-    {
-        if (e.Key == "Enter")
-        {
-            ApplyFilter();
-        }
     }
 
 
